@@ -11,7 +11,7 @@ const generateToken = (id) => {
 };
 
 // @desc    Register new user
-// @route   POST /api/users/register
+// @route   POST /users/register
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -44,7 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Login user
-// @route   POST /api/users/login
+// @route   POST /users/login
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
@@ -66,7 +66,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 
 // @desc    Get user profile
-// @route   GET /api/users/profile
+// @route   GET /users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
@@ -85,7 +85,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update user profile
-// @route   PUT /api/users/profile
+// @route   PUT /users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
