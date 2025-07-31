@@ -9,7 +9,7 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 
 connectDB();
 const allowedOrigins = [
-    'https://ecommerce-api-f4f2.onrender.com/'
+    'https://ecommerce-frontend-eight-blue.vercel.app/'
 ];
 
 app.use(cors({
