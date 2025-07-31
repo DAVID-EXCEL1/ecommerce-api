@@ -4,10 +4,11 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
-dotenv.config();
 const { errorHandler } = require('./middleware/errorMiddleware');
 
+dotenv.config();
 connectDB();
+
 const allowedOrigins = [
     'https://ecommerce-frontend-eight-blue.vercel.app'
 ];
@@ -23,23 +24,24 @@ app.use(cors({
     credentials: true,
 }));
 
-app.options('/', cors());
-
 app.use(express.json());
 
 app.use('/users', userRoutes);
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
+
 const productRoutes = require('./routes/productRoutes');
 app.use('/products', productRoutes);
 
 const orderRoutes = require('./routes/orderRoutes');
 app.use('/orders', orderRoutes);
+
 const cartRoutes = require('./routes/cartRoutes');
 app.use('/cart', cartRoutes);
+
 const adminRoutes = require('./routes/adminRoutes');
-app.use('/admin', adminRoutes); // Or wherever appropriate
+app.use('/admin', adminRoutes);
 
 app.use(errorHandler);
 
